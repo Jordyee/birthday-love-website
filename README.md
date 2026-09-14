@@ -25,4 +25,4 @@ src/
 
 ## Publikasi
 
-Karena ini situs statis, GitHub Pages dapat menerbitkannya langsung dari branch `main` dan folder `/src`.
+Karena ini situs statis, workflow GitHub Actions yang disertakan menerbitkan folder `src/` ke GitHub Pages pada setiap push ke branch `main`.
