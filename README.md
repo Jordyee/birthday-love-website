@@ -1,28 +1,15 @@
-# Birthday Love Website
+# For Vellaryyyy 🤍
 
-Starter website hadiah ulang tahun romantis yang dibuat dengan HTML, CSS, dan JavaScript murni. Tidak membutuhkan proses build atau dependensi eksternal.
+Website hadiah ulang tahun ke-20 untuk Vellary, dibuat dengan HTML, CSS, dan JavaScript murni.
 
-## Menjalankan secara lokal
+## Isi
 
-Buka `src/index.html` di browser, atau gunakan ekstensi live server pada editor pilihanmu.
+- Pembuka hadiah dan musik pilihan
+- Cerita perjalanan Sandroo dan Vellary
+- Galeri foto interaktif
+- Kartu sifat dan alasan cinta
+- Mini-game menangkap hati
+- Amplop dan surat ulang tahun
+- Penutup interaktif dengan konfeti
 
-## Struktur
-
-```text
-src/
-  index.html       Halaman utama
-  styles/main.css  Gaya visual dan responsivitas
-  scripts/main.js  Interaksi halaman
-  assets/          Foto, musik, dan aset khusus
-```
-
-## Menyesuaikan hadiah
-
-1. Ganti nama dan pesan pembuka di `src/index.html`.
-2. Tambahkan foto ke `src/assets/images/`, lalu pakai pada elemen galeri.
-3. Tambahkan lagu ke `src/assets/audio/` jika ingin memasukkan musik.
-4. Sesuaikan warna, tipografi, dan animasi di `src/styles/main.css`.
-
-## Publikasi
-
-Karena ini situs statis, workflow GitHub Actions yang disertakan menerbitkan folder `src/` ke GitHub Pages pada setiap push ke branch `main`.
+GitHub Actions menerbitkan folder `src/` ke GitHub Pages setiap kali branch `main` diperbarui.

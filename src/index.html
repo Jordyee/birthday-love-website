@@ -1,32 +1,251 @@
 <!doctype html>
 <html lang="id">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Sebuah hadiah ulang tahun yang dibuat dengan cinta." />
-    <title>Untukmu, Selamat Ulang Tahun</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles/main.css" />
-  </head>
-  <body>
-    <main>
-      <section class="hero" aria-labelledby="hero-title">
-        <p class="eyebrow">Sebuah kejutan kecil untukmu</p>
-        <h1 id="hero-title">Selamat ulang tahun, <em>sayang.</em></h1>
-        <p class="intro">Hari ini adalah alasan sempurna untuk merayakan orang paling istimewa dalam hidupku.</p>
-        <button class="reveal-button" type="button" data-reveal-message>Buka pesan kecilku <span aria-hidden="true">♡</span></button>
-      </section>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#fff4f7">
+  <meta name="description" content="Sebuah hadiah kecil penuh cinta untuk ulang tahun Vellary yang ke-20.">
+  <title>For Vellaryyyy, with all my love 🤍</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Gochi+Hand&family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%23ffeff3'/%3E%3Cpath d='M32 50S10 38 10 23c0-11 14-15 22-4 8-11 22-7 22 4 0 15-22 27-22 27Z' fill='%23d84b6a'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body class="locked">
+  <div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
 
-      <section class="love-note" id="love-note" hidden aria-live="polite">
-        <p class="eyebrow">Untukmu</p>
-        <blockquote>
-          Terima kasih sudah menjadi rumah, tawa, dan bagian terbaik dari setiap hariku. Semoga tahun barumu selembut senyummu dan seindah semua mimpi kita.
-        </blockquote>
-        <p class="signature">Dengan seluruh cintaku.</p>
-      </section>
-    </main>
-    <script src="scripts/main.js"></script>
-  </body>
+  <div class="intro" id="intro">
+    <div class="intro-glow intro-glow-one"></div>
+    <div class="intro-glow intro-glow-two"></div>
+    <div class="intro-card">
+      <p class="eyebrow">15 • 09 • 2026</p>
+      <div class="tiny-hearts" aria-hidden="true">♡ &nbsp; ♡ &nbsp; ♡</div>
+      <h1>Untuk<br><em>Vellaryyyy</em></h1>
+      <p class="intro-copy">Ada hadiah kecil dari seseorang yang sayanggg sekali sama kamu.</p>
+      <button class="primary-btn" id="openGift">
+        <span>Buka pelan-pelan</span>
+        <span aria-hidden="true">💌</span>
+      </button>
+      <p class="tiny-note">Psst… nyalakan suaranya ya ♫</p>
+    </div>
+  </div>
+
+  <button class="music-toggle" id="musicToggle" aria-label="Putar lagu Out Of My League">
+    <span class="music-icon" aria-hidden="true">♫</span>
+    <span id="musicLabel">Play our song</span>
+  </button>
+  <div id="musicPlayer" class="music-player" aria-hidden="true"></div>
+
+  <main id="mainContent" aria-hidden="true">
+    <section class="hero section">
+      <div class="hero-doodles" aria-hidden="true">
+        <span>♡</span><span>✦</span><span>love you</span>
+      </div>
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Chapter twenty begins</p>
+        <h2>Happy Birthday,<br><em>beautiful.</em></h2>
+        <p class="hero-sub">Hari ini dunia merayakan dua puluh tahun kamu hadir. Aku merayakan satu hal lagi: betapa beruntungnya aku bisa mengenal dan mencintai kamu.</p>
+        <a class="scroll-cue" href="#our-story">Lihat cerita kita <span>↓</span></a>
+      </div>
+      <div class="hero-photo reveal">
+        <div class="polaroid hero-polaroid">
+          <img src="assets/images/photo-01.jpg" alt="Sandroo dan Vellary tersenyum bersama" fetchpriority="high">
+          <p>my favorite person, always ♡</p>
+        </div>
+        <div class="age-sticker" aria-label="Ulang tahun ke-20">
+          <strong>20</strong>
+          <span>years of<br>being lovely</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section story" id="our-story">
+      <div class="section-heading reveal">
+        <p class="eyebrow">The story so far</p>
+        <h2>Semua bermula<br>dari hal yang sederhana.</h2>
+      </div>
+      <div class="timeline">
+        <article class="moment reveal">
+          <span class="moment-number">01</span>
+          <div>
+            <p class="moment-kicker">Before the butterflies</p>
+            <h3>Ternyata pernah bertemu lebih dulu</h3>
+            <p>Waktu pelayanan promosi, kita sebenarnya sudah pernah ada di satu cerita yang sama. Belum tahu saja kalau nanti kamu akan jadi seseorang yang begitu berarti.</p>
+          </div>
+          <div class="mini-polaroid tilt-left">
+            <img src="assets/images/photo-03.jpg" alt="Sandroo dan Vellary berdiri bersama di lapangan" loading="lazy">
+          </div>
+        </article>
+        <article class="moment reverse reveal">
+          <span class="moment-number">02</span>
+          <div>
+            <p class="moment-kicker">And then, MPLS</p>
+            <h3>Di situlah aku mulai sadar</h3>
+            <p>Entah sejak kapan, melihat Vell mulai terasa berbeda. Dari sekadar kenal, pelan-pelan ada rasa nyaman yang tidak bisa dijelaskan dengan biasa.</p>
+          </div>
+          <div class="mini-polaroid tilt-right">
+            <img src="assets/images/photo-09.jpg" alt="Sandroo dan Vellary setelah kegiatan bersama" loading="lazy">
+          </div>
+        </article>
+        <article class="moment reveal">
+          <span class="moment-number">03</span>
+          <div>
+            <p class="moment-kicker">Our silly little moment</p>
+            <h3>Sleepcall… sama bocil sekali</h3>
+            <p>Awal-awal sleepcall, kamu senang sekali sampai heboh sendiri. Lucu, random, dan sekarang jadi salah satu memori kecil yang selalu bikin senyum. Wkwkw.</p>
+          </div>
+          <div class="mini-polaroid tilt-left">
+            <img src="assets/images/photo-10.jpg" alt="Foto selfie lucu Sandroo dan Vellary" loading="lazy">
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="gallery">
+      <div class="gallery-title reveal">
+        <p class="handwritten">little moments, big feelings</p>
+        <h2>Beberapa halaman favoritku</h2>
+        <p>Geser fotonya—karena cerita kita terlalu manis kalau cuma ditaruh satu frame.</p>
+      </div>
+      <div class="photo-strip reveal" id="photoStrip" tabindex="0" aria-label="Galeri foto Sandroo dan Vellary">
+        <figure class="photo-card"><img src="assets/images/photo-04.jpg" alt="Selfie bersama dengan pakaian putih" loading="lazy"><figcaption>us, being us ♡</figcaption></figure>
+        <figure class="photo-card tall"><img src="assets/images/photo-07.jpg" alt="Menikmati senja di tepi laut" loading="lazy"><figcaption>even sunsets feel warmer</figcaption></figure>
+        <figure class="photo-card"><img src="assets/images/photo-05.jpg" alt="Vellary memotret Sandroo lewat ponsel" loading="lazy"><figcaption>caught loving you</figcaption></figure>
+        <figure class="photo-card"><img src="assets/images/photo-06.jpg" alt="Berpose bersama di studio foto" loading="lazy"><figcaption>my safest place</figcaption></figure>
+        <figure class="photo-card tall"><img src="assets/images/photo-02.jpg" alt="Sandroo dan Vellary berpakaian formal" loading="lazy"><figcaption>pretty looks good on us</figcaption></figure>
+        <figure class="photo-card"><img src="assets/images/photo-08.jpg" alt="Berpose lucu bersama di studio foto" loading="lazy"><figcaption>my favorite duo</figcaption></figure>
+        <figure class="photo-card tall"><img src="assets/images/photo-11.jpg" alt="Sandroo dan Vellary berpose di acara" loading="lazy"><figcaption>always on your team</figcaption></figure>
+        <figure class="photo-card"><img src="assets/images/photo-12.jpg" alt="Sandroo dan Vellary di taman" loading="lazy"><figcaption>side by side</figcaption></figure>
+      </div>
+      <p class="swipe-hint" aria-hidden="true">← drag to remember →</p>
+    </section>
+
+    <section class="section traits-section" id="traits">
+      <div class="traits-card reveal">
+        <div class="traits-heading">
+          <p class="eyebrow">Things I know for sure</p>
+          <h2>Velll itu…</h2>
+          <p>Sentuh satu-satu. Aku bisa menyebutkannya seharian, tapi kita mulai dari tujuh dulu.</p>
+        </div>
+        <div class="trait-grid" id="traitGrid">
+          <button class="trait" data-note="Cantik, bahkan di hari ketika Vell merasa biasa saja."><span>cantik</span><small>tap me</small></button>
+          <button class="trait" data-note="Baik dengan cara yang tulus dan selalu terasa hangat."><span>baik</span><small>tap me</small></button>
+          <button class="trait" data-note="Pintar—dan selalu membuatku kagum."><span>pintar</span><small>tap me</small></button>
+          <button class="trait" data-note="Kuat melewati banyak hal, bahkan yang tidak semua orang tahu."><span>kuat</span><small>tap me</small></button>
+          <button class="trait" data-note="Mandiri, tapi tidak harus menghadapi semuanya sendirian."><span>mandiri</span><small>tap me</small></button>
+          <button class="trait" data-note="Tegas, tahu apa yang Vell mau dan layak dapatkan."><span>tegas</span><small>tap me</small></button>
+          <button class="trait special" data-note="Sempurna bukan karena tanpa kurang, tapi karena menjadi Vell sepenuhnya."><span>sempurna</span><small>tap me ♡</small></button>
+        </div>
+        <div class="trait-message" id="traitMessage" aria-live="polite">Pilih satu kata di atas ♡</div>
+      </div>
+    </section>
+
+    <section class="section reasons-section" id="reasons">
+      <div class="section-heading centered reveal">
+        <p class="eyebrow">If you ever wonder why</p>
+        <h2>Kenapa aku sayang Vell?</h2>
+      </div>
+      <div class="reason-deck reveal" id="reasonDeck">
+        <article class="reason-card active">
+          <span>01</span>
+          <p>Karena Vell memang cocoknya disayang.</p>
+        </article>
+        <article class="reason-card">
+          <span>02</span>
+          <p>Karena sekuat apa pun Vell, pasti ada sisi lemah yang butuh seseorang.</p>
+        </article>
+        <article class="reason-card">
+          <span>03</span>
+          <p>Karena Vell bisa membuat hati Joma tenang.</p>
+        </article>
+        <article class="reason-card">
+          <span>04</span>
+          <p>Karena buat aku, Vell adalah segalanya.</p>
+        </article>
+      </div>
+      <div class="deck-controls reveal">
+        <button id="prevReason" aria-label="Alasan sebelumnya">←</button>
+        <span id="reasonCount">1 / 4</span>
+        <button id="nextReason" aria-label="Alasan berikutnya">→</button>
+      </div>
+    </section>
+
+    <section class="section game-section" id="game">
+      <div class="game-card reveal">
+        <div class="game-copy">
+          <p class="eyebrow">A tiny mission for the birthday girl</p>
+          <h2>Tangkap cintanya!</h2>
+          <p>Ada lima hati kecil yang kabur karena malu. Tangkap semuanya untuk membuka pesan rahasia.</p>
+          <div class="heart-score"><span id="heartScore">0</span> / 5 hati ditemukan</div>
+        </div>
+        <div class="heart-game" id="heartGame">
+          <button class="catch-heart" id="catchHeart" aria-label="Tangkap hati">♥</button>
+          <div class="secret-message" id="secretMessage">
+            <span>you found them all!</span>
+            <strong>Plot twist:</strong>
+            <p>Semua hatinya dari awal memang selalu pulang ke Vell. ♡</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section letter-section" id="letter">
+      <div class="letter-intro reveal">
+        <p class="eyebrow">One last thing</p>
+        <h2>Ada surat yang<br>menunggu dibaca.</h2>
+        <p>Klik amplopnya ketika Vell sudah siap.</p>
+      </div>
+      <button class="envelope-wrap reveal" id="envelope" aria-label="Buka surat ulang tahun">
+        <span class="envelope">
+          <span class="envelope-back"></span>
+          <span class="envelope-letter"><span>for Vell, with love</span></span>
+          <span class="envelope-front"></span>
+          <span class="envelope-flap"></span>
+          <span class="wax-seal">S</span>
+        </span>
+        <span class="envelope-hint">tap to open</span>
+      </button>
+      <article class="love-letter" id="loveLetter">
+        <p class="letter-date">15 September 2026</p>
+        <h3>Happy birthday, my love. 🤍</h3>
+        <p>Hari ini aku bukan cuma bersyukur karena kamu bertambah satu tahun, tapi juga karena Tuhan mengizinkan aku mengenal dan mencintai seseorang seperti kamu.</p>
+        <p>Terima kasih karena sudah menjadi seseorang yang selalu punya tempat spesial di hatiku. Dari banyaknya orang yang bisa aku temui, aku bersyukur Tuhan mempertemukan aku dengan kamu. Aku mungkin nggak selalu bisa mengungkapkannya dengan sempurna, tapi aku benar-benar sayang sama kamu.</p>
+        <p>Di ulang tahunmu ini, aku berdoa semoga Tuhan selalu menjaga langkahmu, memberikan kesehatan, sukacita, hikmat, dan kekuatan dalam setiap proses yang kamu jalani. Semoga setiap impian yang baik dalam hatimu Tuhan tuntun satu per satu, dan ketika jalanmu terasa berat, semoga kamu selalu ingat bahwa Tuhan tidak pernah meninggalkanmu.</p>
+        <p>Aku juga berdoa supaya hubungan kita terus menjadi sesuatu yang membawa kita semakin dekat kepada Tuhan, bukan hanya semakin dekat satu sama lain. Kalau Tuhan berkenan, semoga aku bisa terus berada di sampingmu—menemani, mendukung, mendoakan, dan mencintaimu dalam setiap musim kehidupan.</p>
+        <p>Happy birthday, beautiful.<br>May God bless your new chapter abundantly.<br>And may I be one of the reasons you smile a little more this year. ❤️</p>
+        <p class="letter-sign">I love you, always.<br><strong>— Sandroo</strong></p>
+      </article>
+    </section>
+
+    <section class="final-section section" id="finale">
+      <div class="final-bg" aria-hidden="true"></div>
+      <div class="final-content reveal">
+        <p class="eyebrow light">Before this story ends…</p>
+        <h2>Vell, bolehkah aku tetap ada di sampingmu—di ulang tahun berikutnya, dan yang setelahnya?</h2>
+        <div class="answer-buttons" id="answerButtons">
+          <button class="yes-btn" id="yesBtn">Boleh dong! ♡</button>
+          <button class="shy-btn" id="shyBtn">Hmm…</button>
+        </div>
+        <p class="shy-caption" id="shyCaption" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <div class="celebration" id="celebration" role="dialog" aria-modal="true" aria-labelledby="celebrationTitle">
+    <div class="celebration-card">
+      <button class="close-celebration" id="closeCelebration" aria-label="Tutup pesan">×</button>
+      <img src="assets/images/photo-13.jpg" alt="Sandroo mengecup kepala Vellary saat senja">
+      <div>
+        <span class="celebration-small">YAY! BEST ANSWER EVER.</span>
+        <h2 id="celebrationTitle">Happy 20th,<br>Vellaryyyy!</h2>
+        <p>Semoga tahun ini dipenuhi doa yang terjawab, pelukan yang menenangkan, dan cinta yang selalu terasa seperti pulang.</p>
+        <strong>With all my love, Sandroo ♡</strong>
+      </div>
+    </div>
+  </div>
+
+  <canvas id="confettiCanvas" aria-hidden="true"></canvas>
+  <script src="scripts/main.js"></script>
+</body>
 </html>
