@@ -123,6 +123,29 @@
       <p class="swipe-hint" aria-hidden="true">← drag to remember →</p>
     </section>
 
+    <section class="section little-things-section" id="little-things">
+      <div class="little-things-intro reveal">
+        <p class="eyebrow">Tiny things, huge love</p>
+        <h2>Ada tiga rahasia<br>kecil untuk Vell.</h2>
+        <p>Pilih satu amplop. Setelah dibuka, rahasianya tidak bisa pura-pura malu lagi.</p>
+      </div>
+      <div class="love-notes reveal" id="loveNotes" aria-live="polite">
+        <button class="love-note" type="button" data-title="Untuk hari yang berat" data-message="Kalau hari ini terasa terlalu ramai atau berat, ingat ya: Vell tidak perlu kuat sendirian. Ada Joma yang selalu mau dengar.">
+          <span class="note-seal">♡</span><span class="note-label">buka saat butuh peluk</span>
+        </button>
+        <button class="love-note" type="button" data-title="Untuk senyum paling manis" data-message="Satu fakta yang tidak bisa dibantah: senyum Vell adalah salah satu tempat favorit Joma untuk pulang.">
+          <span class="note-seal">✦</span><span class="note-label">buka saat mau salting</span>
+        </button>
+        <button class="love-note" type="button" data-title="Untuk hari ulang tahun ini" data-message="Semoga dua puluh tahun Vell dimulai dengan rasa dicintai—bukan hanya hari ini, tapi juga di hari-hari biasa yang akan datang.">
+          <span class="note-seal">20</span><span class="note-label">buka khusus birthday girl</span>
+        </button>
+      </div>
+      <div class="note-reveal" id="noteReveal" hidden>
+        <p class="note-reveal-kicker" id="noteRevealTitle"></p>
+        <p id="noteRevealMessage"></p>
+      </div>
+    </section>
+
     <section class="section traits-section" id="traits">
       <div class="traits-card reveal">
         <div class="traits-heading">
@@ -189,6 +212,38 @@
             <p>Semua hatinya dari awal memang selalu pulang ke Vell. ♡</p>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section hug-section">
+      <div class="hug-card reveal">
+        <div>
+          <p class="eyebrow">Long-distance, but never loveless</p>
+          <h2>Satu pelukan<br>buat Vell.</h2>
+          <p>Tekan tombolnya kalau Vell butuh diingatkan: ada seseorang yang sangat sayang sama kamu.</p>
+        </div>
+        <button class="hug-button" id="hugButton" type="button" aria-label="Kirim pelukan virtual untuk Vell">
+          <span class="hug-icon" aria-hidden="true">♡</span>
+          <span>Kirim peluk</span>
+        </button>
+        <p class="hug-status" id="hugStatus" aria-live="polite">Pelukan masih menunggu buat dikirim.</p>
+      </div>
+    </section>
+
+    <section class="section flower-section" id="flower-surprise">
+      <div class="flower-copy reveal">
+        <p class="eyebrow">A little garden for my favorite girl</p>
+        <h2>Ada bunga yang<br>mau mekar untuk Vell.</h2>
+        <p>Katanya bunga mekar saat bertemu cahaya. Kalau ini, mekarnya karena dipencet birthday girl.</p>
+        <button class="bloom-button" id="bloomButton" type="button" aria-controls="flowerGarden" aria-expanded="false">
+          <span aria-hidden="true">✦</span> Mekarkan bunga
+        </button>
+      </div>
+      <div class="flower-garden" id="flowerGarden" aria-live="polite" aria-label="Taman bunga untuk Vell">
+        <div class="bloom-flower flower-one" aria-hidden="true"><span class="stem"></span><span class="leaf leaf-left"></span><span class="leaf leaf-right"></span><span class="flower-head"><i></i><i></i><i></i><i></i><i></i><i></i><b></b></span></div>
+        <div class="bloom-flower flower-two" aria-hidden="true"><span class="stem"></span><span class="leaf leaf-left"></span><span class="leaf leaf-right"></span><span class="flower-head"><i></i><i></i><i></i><i></i><i></i><i></i><b></b></span></div>
+        <div class="bloom-flower flower-three" aria-hidden="true"><span class="stem"></span><span class="leaf leaf-left"></span><span class="leaf leaf-right"></span><span class="flower-head"><i></i><i></i><i></i><i></i><i></i><i></i><b></b></span></div>
+        <p class="bloom-message" id="bloomMessage">Seperti bunga yang mekar pelan-pelan, semoga hari-hari Vell juga selalu menemukan alasan untuk tersenyum. Dan kalau boleh, biarkan Joma jadi salah satunya. ♡</p>
       </div>
     </section>
 

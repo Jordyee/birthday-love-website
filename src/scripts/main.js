@@ -47,10 +47,23 @@ openGift.addEventListener("click", () => {
 
 musicToggle.addEventListener("click", () => isMusicPlaying ? stopMusic() : startMusic());
 
-window.addEventListener("scroll", () => {
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+let scrollFrame;
+function updateScrollEffects() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
   progressBar.style.width = `${max > 0 ? (window.scrollY / max) * 100 : 0}%`;
+  if (!prefersReducedMotion) {
+    const heroOffset = Math.min(window.scrollY, window.innerHeight) * .035;
+    document.documentElement.style.setProperty("--hero-photo-shift", `${-heroOffset}px`);
+    document.documentElement.style.setProperty("--sticker-shift", `${heroOffset * .9}px`);
+    document.documentElement.style.setProperty("--doodle-shift", `${heroOffset * .55}px`);
+  }
+  scrollFrame = undefined;
+}
+window.addEventListener("scroll", () => {
+  if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScrollEffects);
 }, { passive: true });
+updateScrollEffects();
 
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -93,6 +106,21 @@ document.querySelectorAll(".trait").forEach((trait) => {
     document.querySelectorAll(".trait").forEach((item) => item.classList.remove("active"));
     trait.classList.add("active");
     traitMessage.textContent = trait.dataset.note;
+  });
+});
+
+const noteReveal = document.getElementById("noteReveal");
+const noteRevealTitle = document.getElementById("noteRevealTitle");
+const noteRevealMessage = document.getElementById("noteRevealMessage");
+document.querySelectorAll(".love-note").forEach((note) => {
+  note.addEventListener("click", () => {
+    document.querySelectorAll(".love-note").forEach((item) => item.classList.remove("open"));
+    note.classList.add("open");
+    noteRevealTitle.textContent = note.dataset.title;
+    noteRevealMessage.textContent = note.dataset.message;
+    noteReveal.hidden = false;
+    noteReveal.style.animation = "none";
+    requestAnimationFrame(() => { noteReveal.style.animation = ""; });
   });
 });
 
@@ -141,6 +169,16 @@ catchHeart.addEventListener("click", () => {
 });
 window.addEventListener("resize", () => { if (score < 5) moveHeart(); });
 
+const hugButton = document.getElementById("hugButton");
+const hugStatus = document.getElementById("hugStatus");
+let hugsSent = 0;
+hugButton.addEventListener("click", () => {
+  hugsSent += 1;
+  hugStatus.textContent = hugsSent === 1 ? "Pelukan dari Sandroo sudah sampai. Simpan yang erat ya. ♡" : `Pelukan ke-${hugsSent} terkirim. Ternyata Joma memang tidak bisa berhenti sayang.`;
+  burstHearts(hugButton.getBoundingClientRect());
+  hugButton.animate([{ transform: "scale(1)" }, { transform: "scale(.92)" }, { transform: "scale(1.08)" }, { transform: "scale(1)" }], { duration: 360, easing: "ease-out" });
+});
+
 function burstHearts(rect) {
   for (let i = 0; i < 6; i += 1) {
     const heart = document.createElement("span");
@@ -158,6 +196,15 @@ function burstHearts(rect) {
     setTimeout(() => heart.remove(), 850);
   }
 }
+
+const bloomButton = document.getElementById("bloomButton");
+const flowerGarden = document.getElementById("flowerGarden");
+bloomButton.addEventListener("click", () => {
+  flowerGarden.classList.add("bloomed");
+  bloomButton.setAttribute("aria-expanded", "true");
+  bloomButton.innerHTML = '<span aria-hidden="true">♡</span> Bunganya sudah mekar';
+  burstHearts(bloomButton.getBoundingClientRect());
+});
 
 const envelope = document.getElementById("envelope");
 const loveLetter = document.getElementById("loveLetter");
