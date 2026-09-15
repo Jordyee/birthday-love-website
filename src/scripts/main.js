@@ -4,28 +4,25 @@ const openGift = document.getElementById("openGift");
 const mainContent = document.getElementById("mainContent");
 const musicToggle = document.getElementById("musicToggle");
 const musicLabel = document.getElementById("musicLabel");
-const musicPlayer = document.getElementById("musicPlayer");
+const backgroundMusic = document.getElementById("backgroundMusic");
 const progressBar = document.getElementById("progressBar");
 
 let isMusicPlaying = false;
 
 function startMusic() {
   if (isMusicPlaying) return;
-  const frame = document.createElement("iframe");
-  frame.src = "https://www.youtube.com/embed/26ivk5z9ag4?autoplay=1&loop=1&playlist=26ivk5z9ag4&controls=0";
-  frame.title = "LANY — Out Of My League";
-  frame.allow = "autoplay; encrypted-media";
-  frame.width = "1";
-  frame.height = "1";
-  musicPlayer.replaceChildren(frame);
-  isMusicPlaying = true;
-  musicToggle.classList.add("playing");
-  musicLabel.textContent = "Our song is playing";
-  musicToggle.setAttribute("aria-label", "Hentikan lagu");
+  backgroundMusic.play().then(() => {
+    isMusicPlaying = true;
+    musicToggle.classList.add("playing");
+    musicLabel.textContent = "Our song is playing";
+    musicToggle.setAttribute("aria-label", "Hentikan lagu");
+  }).catch(() => {
+    musicLabel.textContent = "Tap to play our song";
+  });
 }
 
 function stopMusic() {
-  musicPlayer.replaceChildren();
+  backgroundMusic.pause();
   isMusicPlaying = false;
   musicToggle.classList.remove("playing");
   musicLabel.textContent = "Play our song";
