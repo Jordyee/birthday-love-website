@@ -10,14 +10,20 @@ const progressBar = document.getElementById("progressBar");
 let isMusicPlaying = false;
 
 function startMusic() {
-  if (isMusicPlaying) return;
-  backgroundMusic.play().then(() => {
+  if (isMusicPlaying || !backgroundMusic) return;
+  backgroundMusic.muted = false;
+  backgroundMusic.volume = 1;
+  const playAttempt = backgroundMusic.play();
+  if (!playAttempt) return;
+  playAttempt.then(() => {
     isMusicPlaying = true;
     musicToggle.classList.add("playing");
     musicLabel.textContent = "Our song is playing";
     musicToggle.setAttribute("aria-label", "Hentikan lagu");
   }).catch(() => {
-    musicLabel.textContent = "Tap to play our song";
+    musicToggle.classList.remove("playing");
+    musicLabel.textContent = "Tap here to play ♫";
+    musicToggle.setAttribute("aria-label", "Tap untuk memutar lagu");
   });
 }
 
@@ -30,11 +36,12 @@ function stopMusic() {
 }
 
 openGift.addEventListener("click", () => {
+  // Keep playback inside this direct user gesture; mobile browsers reject delayed autoplay.
+  startMusic();
   intro.classList.add("opened");
   body.classList.remove("locked");
   body.classList.add("started");
   mainContent.setAttribute("aria-hidden", "false");
-  startMusic();
   setTimeout(() => intro.remove(), 900);
 });
 
