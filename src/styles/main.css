@@ -14,7 +14,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { max-width: 100%; overflow-x: clip; scroll-behavior: smooth; }
 body {
   margin: 0;
   color: var(--ink);
@@ -22,6 +22,7 @@ body {
   font-family: "DM Sans", sans-serif;
   font-size: 1rem;
   line-height: 1.7;
+  max-width: 100%;
   overflow-x: hidden;
 }
 body.locked { overflow: hidden; }
@@ -289,6 +290,8 @@ body.started main { opacity: 1; }
   gap: 1.5rem;
   padding: 2rem clamp(1.25rem, 7vw, 7rem) 3rem;
   overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  touch-action: pan-y;
   cursor: grab;
   scrollbar-width: none;
   scroll-snap-type: x proximity;
@@ -563,7 +566,7 @@ body.started main { opacity: 1; }
 .final-bg {
   position: absolute;
   inset: 0;
-  background: linear-gradient(rgba(21,6,10,.48), rgba(21,6,10,.83)), url("../assets/images/photo-07.jpg") center/cover;
+  background: linear-gradient(rgba(21,6,10,.48), rgba(21,6,10,.83)), url("../assets/images/photo-03.jpg") center/cover;
   transform: scale(1.03);
 }
 .final-content { position: relative; z-index: 2; max-width: 58rem; text-align: center; }
@@ -648,13 +651,26 @@ body.started main { opacity: 1; }
 }
 
 @media (max-width: 540px) {
-  .section { padding-inline: 1.1rem; }
-  .intro-card { width: 100%; max-width: 100%; padding: 2.6rem 1.4rem; overflow: hidden; }
-  .intro h1 { font-size: clamp(2.8rem, 14vw, 3.6rem); }
-  .music-toggle { top: .75rem; right: .75rem; }
-  .hero { padding-top: 7rem; }
-  .hero h2 { font-size: clamp(3.25rem, 18vw, 5rem); }
-  .hero-photo { width: 82vw; }
+  .section { padding: clamp(4.5rem, 16vw, 6rem) 1.1rem; }
+  .intro { display: flex; align-items: center; justify-content: center; padding: 1rem; }
+  .intro-card {
+    width: min(34rem, calc(100vw - 2rem));
+    max-width: none;
+    padding: 2.4rem 1.2rem;
+    overflow: hidden;
+  }
+  .intro h1 { font-size: clamp(2.65rem, 13vw, 3.45rem); }
+  .intro-copy { max-width: 19rem; }
+  .music-toggle {
+    top: calc(.7rem + env(safe-area-inset-top));
+    right: .7rem;
+    max-width: calc(100vw - 1.4rem);
+    white-space: nowrap;
+  }
+  .hero { min-height: 100dvh; padding-top: 6.5rem; padding-bottom: 4.5rem; }
+  .hero h2 { font-size: clamp(2.85rem, 14vw, 4.25rem); }
+  .hero-sub { max-width: 22rem; font-size: 1rem; }
+  .hero-photo { width: min(21rem, 82vw); }
   .age-sticker { left: -.7rem; bottom: 1.3rem; width: 7.25rem; height: 7.25rem; border-width: .35rem; }
   .age-sticker span { display: none; }
   .story .section-heading { margin-bottom: 3rem; }
@@ -662,16 +678,31 @@ body.started main { opacity: 1; }
   .moment-number, .moment.reverse .moment-number { grid-column: 1; font-size: 2.3rem; }
   .moment > div, .moment.reverse > div:nth-of-type(1), .moment > .mini-polaroid, .moment.reverse > .mini-polaroid { grid-column: 1; grid-row: auto; }
   .mini-polaroid { width: 84% !important; margin: 1rem auto 0; }
-  .photo-card { flex-basis: 76vw; }
+  .photo-card { flex-basis: min(76vw, 19rem); }
   .trait { min-height: 7.2rem; }
   .trait span { font-size: 1.35rem; }
   .trait-message { text-align: left; }
   .reason-deck { height: 24rem; }
+  .reason-card { padding: 2rem 1.5rem; }
+  .reason-card p { font-size: clamp(1.55rem, 7vw, 2.1rem); }
   .game-copy { padding: 2rem 1.5rem; }
   .heart-game { min-height: 25rem; }
   .love-letter { margin-top: 5rem; padding: 2rem 1.35rem; }
   .love-letter p { line-height: 1.85; }
-  .answer-buttons { flex-wrap: wrap; }
+  .final-section { padding-bottom: calc(4.5rem + env(safe-area-inset-bottom)); }
+  .answer-buttons { min-height: 8rem; flex-wrap: wrap; }
+  .yes-btn, .shy-btn { min-height: 3rem; }
+  .celebration { padding: max(1rem, env(safe-area-inset-top)) 1rem max(1rem, env(safe-area-inset-bottom)); }
+  .celebration-card > div { padding: 2rem 1.5rem; }
+}
+
+@media (max-width: 360px) {
+  .intro-card { padding-inline: 1rem; }
+  .trait-grid { grid-template-columns: 1fr; }
+  .trait.special { grid-column: span 1; }
+  .trait { min-height: 5.8rem; text-align: left; }
+  .deck-controls { gap: 1rem; }
+  .deck-controls button { width: 3rem; height: 3rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
